@@ -1,9 +1,6 @@
 <template>
     <div>
-        <BaseCamera :v-if="cameras" v-for="camera in cameras"
-                :key="camera.ip" brand="Foscam" :http_port="parseInt(camera.http_port)" :ip="camera.ip"
-                :name="camera.name" :model="camera.model" :id="camera.id"/>
-        <TheVideo :camera="1" :date="'17-07-2022'"/>
+        <router-view />
     </div>
 </template>
 
@@ -14,14 +11,14 @@ import axios from 'axios'
 import { BASE_URL } from '@/constants.js'
 
 export default {
-    name: 'MainView',
+    name: 'LoggedInView',
     components: {
         BaseCamera,
         TheVideo
     },
     data() {
         return {
-          cameras: null
+            cameras: null
         }
     },
     created() {

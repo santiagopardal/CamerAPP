@@ -1,15 +1,23 @@
 <template>
     <div>
-        <video width="1000" controls>
-            <source src="http://localhost:8080/api/cameras/2/videos/stream/17-07-2022" type="video/mp4">
+        <video controls>
+            <source :src="url" type="video/mp4">
         </video>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "TheVideo"
+import { BASE_URL } from '@/constants.js'
+export default {
+    name: "TheVideo",
+    props: {
+        camera: { type: Number, required: true },
+        date: { type: String, required: true }
+    },
+    computed: {
+        url() { return `${BASE_URL}/cameras/${this.camera}/videos/download/${this.date}` }
     }
+}
 </script>
 
 <style scoped>

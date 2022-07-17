@@ -1,9 +1,17 @@
 <template>
-    <router-view/>
+    <div class="app">
+        <SideBar />
+        <router-view/>
+    </div>
 </template>
 
 <script>
-    export default {
-      name: 'App'
-    }
+import SideBar from "@/components/SideBar/SideBar";
+export default {
+  name: 'App',
+    components: {SideBar}
+}
 </script>
+
+<style lang="scss">
+</style>
