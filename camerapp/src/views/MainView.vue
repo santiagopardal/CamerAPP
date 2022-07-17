@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseCamera from '../components/BaseCamera.vue'
+import BaseCamera from '@/components/BaseCamera.vue'
 import axios from 'axios'
 import { BASE_URL } from '@/constants.js'
 

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import CameraVideos from "@/components/CameraVideos";
+import CameraVideos from "@/components/CameraVideos"
 
 export default {
   name: 'BaseCamera',
