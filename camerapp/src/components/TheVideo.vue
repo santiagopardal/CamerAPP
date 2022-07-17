@@ -1,8 +1,6 @@
 <template>
     <div>
-        <video controls>
-            <source :src="url" type="video/mp4">
-        </video>
+        <video :src="url" autoplay="true" controls/>
     </div>
 </template>
 
@@ -12,10 +10,15 @@ export default {
     name: "TheVideo",
     props: {
         camera: { type: Number, required: true },
-        date: { type: String, required: true }
+        date: { type: String, required: true },
     },
-    computed: {
-        url() { return `${BASE_URL}/cameras/${this.camera}/videos/download/${this.date}` }
+    data(){
+        return {
+            url: ''
+        }
+    },
+    watch: {
+        date: function (newDate) { this.url = `${BASE_URL}/cameras/${this.camera}/videos/stream/${newDate}` }
     }
 }
 </script>
