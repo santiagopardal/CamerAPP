@@ -12,13 +12,10 @@ export default {
         camera: { type: Number, required: true },
         date: { type: String, required: true },
     },
-    data(){
-        return {
-            url: ''
+    computed: {
+        url() {
+            return `${BASE_URL}/cameras/${this.camera}/videos/stream/${this.date}`
         }
-    },
-    watch: {
-        date: function (newDate) { this.url = `${BASE_URL}/cameras/${this.camera}/videos/stream/${newDate}` }
     }
 }
 </script>
