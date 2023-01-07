@@ -10,16 +10,9 @@ function Cameras() {
     const [cameras, setCameras] = useState([])
 
     useEffect(() => {
-        const doFetchCameras = async () => {
-            try {
-                let cams: Camera[] = await getCameras()
-                setCameras(cams)
-            } catch (error) {
-                console.log(error)
-                redirect('/error')
-            }
-        }
-        doFetchCameras()
+        let cams: Promise<Camera[]> = getCameras()
+        cams.then((cameras: Camera[]) => setCameras(cameras))
+        cams.catch(() => redirect('/error'))
     }, []);
 
     return cameras.map((camera: Camera) => <CameraComponent key={camera.getID()} camera={camera}/>)
