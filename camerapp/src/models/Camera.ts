@@ -10,16 +10,17 @@ class Camera {
     framerate: number
     node: number
 
-    constructor(
+    constructor({id, name, ip, streaming_port, http_port, width, height, framerate, node}: {
         id: number,
         name: string,
         ip: string,
+        streaming_port?: number,
         http_port: number,
         width: number,
         height: number,
         framerate: number,
-        node: number,
-        streaming_port?: number
+        node: number
+    }
     ) {
         this.id = id
         this.name = name

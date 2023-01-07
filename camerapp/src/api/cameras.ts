@@ -4,8 +4,19 @@ import API_URL from '../CamerAIConstants'
 
 async function getCameras(): Promise<Camera[]> {
     let response = await axios.get(`${API_URL}/cameras`)
-    let cameras: Object[] = response.data
-    return cameras.map(camera => new Camera(camera.id, camera.name, camera.ip, camera.http_port, camera.width, camera.height, camera.framerate, camera.node, camera.streaming_port));
+    let cameras:
+        {
+            id: number,
+            name: string,
+            ip: string,
+            streaming_port?: number,
+            http_port: number,
+            width: number,
+            height: number,
+            framerate: number,
+            node: number
+        }[] = response.data
+    return cameras.map(camera => new Camera(camera));
 }
 
 export default getCameras
