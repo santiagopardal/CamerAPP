@@ -43,6 +43,10 @@ class Camera {
     getURL(): string {
         return `http://${this.ip}:${this.http_port}`
     }
+
+    isOnline(): boolean {
+        return true
+    }
 }
 
 export default Camera

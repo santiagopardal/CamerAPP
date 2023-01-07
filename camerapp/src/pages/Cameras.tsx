@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import getCameras from '../api/cameras'
 import Camera from "../models/Camera"
 import CameraComponent from "../components/CameraComponent"
+import './Cameras.css'
 
 function Cameras() {
     const [cameras, setCameras] = useState([])
@@ -15,7 +16,14 @@ function Cameras() {
         cams.catch(() => redirect('/error'))
     }, []);
 
-    return cameras.map((camera: Camera) => <CameraComponent key={camera.getID()} camera={camera}/>)
+    let camerasComponents = cameras
+        .sort((camera1: Camera, camera2: Camera) => camera1.getID() < camera2.getID() ? -1 : 1)
+        .map((camera: Camera) => <CameraComponent key={camera.getID()} camera={camera}/>)
+    return (
+        <div className='cameras'>
+            {camerasComponents}
+        </div>
+    )
 }
 
 export default Cameras
