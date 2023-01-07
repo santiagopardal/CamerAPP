@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import NavBar from './NavBar'
-import Button from 'react-bootstrap/Button';
+import NavBar from './CamerAINavBar'
+import Home from './routes/Home'
+import Login from './routes/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [] = useState([])
@@ -9,7 +11,10 @@ function App() {
   return (
       <>
           <NavBar></NavBar>
-          <Button>Some react button</Button>
+          <Routes>
+              <Route path="/" element={ <Home/> }/>
+              <Route path="/login" element={ <Login/> }/>
+          </Routes>
       </>
   )
 }
