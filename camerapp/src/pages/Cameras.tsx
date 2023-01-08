@@ -1,14 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import getCameras from '../api/cameras'
+import { getCameras } from '../api/cameras'
 import Camera from "../models/Camera"
 import CameraComponent from "../components/CameraComponent"
 import Form from 'react-bootstrap/Form';
 import './Cameras.css'
 
 function Cameras() {
+    let navigate = useNavigate()
     const [allCameras, setAllCameras] = useState([])
     const [camerasToDisplay, setCamerasToDisplay] = useState([])
 
@@ -31,7 +32,7 @@ function Cameras() {
                 setCamerasToDisplay(cameras)
             }
         )
-        cams.catch(() => redirect('/error'))
+        cams.catch(() => navigate('/error'))
     }, []);
 
     let camerasComponents = camerasToDisplay
