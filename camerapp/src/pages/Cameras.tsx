@@ -10,8 +10,8 @@ import './Cameras.css'
 
 function Cameras() {
     let navigate = useNavigate()
-    const [allCameras, setAllCameras] = useState([])
-    const [camerasToDisplay, setCamerasToDisplay] = useState([])
+    const [allCameras, setAllCameras] = useState<Camera[]>([])
+    const [camerasToDisplay, setCamerasToDisplay] = useState<Camera[]>([])
 
     const newSearchText = (searcher) => {
         let searchedText = searcher ? searcher.target.value : null

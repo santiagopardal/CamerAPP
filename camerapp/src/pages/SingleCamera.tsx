@@ -5,7 +5,7 @@ import { getCamera } from '../api/cameras'
 import { useNavigate } from 'react-router-dom'
 
 function SingleCamera() {
-    const [camera, setCamera] = useState(null)
+    const [camera, setCamera] = useState<Camera>()
     let { id } = useParams()
     let location = useLocation()
     let navigate = useNavigate()

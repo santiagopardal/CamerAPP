@@ -4,8 +4,6 @@ import CamerAIRoutes from "./Routes";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [] = useState([])
-
   return (
       <>
           <NavBar/>
