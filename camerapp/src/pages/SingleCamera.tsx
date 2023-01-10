@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Camera from '../models/Camera'
 import { useLocation, useParams } from 'react-router-dom'
-import { getCamera } from '../api/cameras'
+import { getCamera } from '../api/Cameras'
 import { useNavigate } from 'react-router-dom'
 
 function SingleCamera() {

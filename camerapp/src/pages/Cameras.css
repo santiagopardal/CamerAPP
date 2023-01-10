@@ -3,3 +3,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.actions {
+    align-items: center;
+    display: flex;
+    max-width: 40rem;
+}

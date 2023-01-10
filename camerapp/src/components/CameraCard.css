@@ -4,7 +4,7 @@
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 1rem;
     border-radius: 0.6rem;
-    width: 20rem;
+    width: 18rem;
     height: 25rem;
     transition:0.3s;
 }
@@ -12,15 +12,9 @@
 .camera:hover {
     padding-top: 1rem;
     transform: scale(1.03);
+    cursor: pointer;
 }
 
-.cameraBottom {
-    text-align: center;
-}
-
-.cameraBottomItem {
-    padding-right: 1rem;
-}
 
 .status {
     padding-right: 0.3rem;

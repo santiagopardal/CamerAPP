@@ -2,10 +2,11 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { getCameras } from '../api/cameras'
+import { getCameras } from '../api/Cameras'
 import Camera from "../models/Camera"
-import CameraComponent from "../components/CameraComponent"
+import CameraCard from "../components/CameraCard"
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import './Cameras.css'
 
 function Cameras() {
@@ -37,12 +38,17 @@ function Cameras() {
 
     let camerasComponents = camerasToDisplay
         .sort((camera1: Camera, camera2: Camera) => camera1.getID() < camera2.getID() ? -1 : 1)
-        .map((camera: Camera) => <CameraComponent key={camera.getID()} camera={camera}/>)
+        .map((camera: Camera) => <CameraCard key={camera.getID()} camera={camera}/>)
 
     return (
-        <div className='cameras'>
-            <Form.Control type="search" placeholder="Search" aria-label="Search" onChange={newSearchText}></Form.Control>
-            {camerasComponents}
+        <div>
+            <div className='actions'>
+                <Form.Control type="search" placeholder="Search" aria-label="Search" onChange={newSearchText}></Form.Control>
+                <Button variant="dark" size='sm'>Add new camera</Button>
+            </div>
+            <div className='cameras'>
+                {camerasComponents}
+            </div>
         </div>
     )
 }
