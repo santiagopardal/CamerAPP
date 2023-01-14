@@ -47,7 +47,7 @@ function Cameras() {
                 <Button variant="dark" size='sm'>Add new camera</Button>
             </div>
             <div className='cameras'>
-                {camerasComponents}
+                { camerasComponents }
             </div>
         </div>
     )

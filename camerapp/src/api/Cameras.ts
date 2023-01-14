@@ -20,7 +20,6 @@ export async function getCameras(): Promise<Camera[]> {
 }
 
 export async function getCamera(cameraId: number): Promise<Camera> {
-    console.log(`${API_URL}/cameras/${cameraId}`)
     let response = await axios.get(`${API_URL}/cameras/${cameraId}`)
     let cameraData: {
         id: number,
@@ -34,4 +33,8 @@ export async function getCamera(cameraId: number): Promise<Camera> {
         node: number
     } = response.data
     return new Camera(cameraData)
+}
+
+export function getSnapshotUrl(camera: Camera) {
+    return `${API_URL}/cameras/snapshot/${camera.getID()}`
 }

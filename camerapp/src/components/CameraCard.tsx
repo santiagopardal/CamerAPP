@@ -1,10 +1,11 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Camera from '../models/Camera'
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 import './CameraCard.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
+import { getSnapshotUrl } from '../api/Cameras'
 
 function CameraCard(properties: {camera: Camera}) {
     let camera: Camera = properties.camera
@@ -18,7 +19,7 @@ function CameraCard(properties: {camera: Camera}) {
 
     return (
         <Card className='camera' onClick={ openCamera }>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Img variant="top" src={ getSnapshotUrl(camera) }/>
             <Card.Body>
                 <Card.Title>{ camera.getName() }</Card.Title>
                 <Card.Text>
