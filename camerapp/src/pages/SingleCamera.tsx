@@ -3,31 +3,67 @@ import Camera from '../models/Camera'
 import { useLocation, useParams } from 'react-router-dom'
 import { getCamera } from '../api/Cameras'
 import { useNavigate } from 'react-router-dom'
+import { getSnapshotUrl } from '../api/Cameras'
+import Button from 'react-bootstrap/Button'
 
 function SingleCamera() {
     const [camera, setCamera] = useState<Camera>()
+    let [isRecording, setIsRecording] = useState<boolean>()
     let { id } = useParams()
     let location = useLocation()
     let navigate = useNavigate()
 
+    const switchRecording = () => {
+        camera.record(!isRecording);
+        setIsRecording(!isRecording)
+    }
+
+    const updateIsRecording = (camera: Camera) => {
+        let recordingPromise = camera.isRecording()
+        recordingPromise
+            .then(recording => setIsRecording(recording))
+            .catch(() => navigate('/error'))
+    }
+
+    const fetchCamera = async () => {
+        try {
+            let cam = await getCamera(id)
+            setCamera(cam)
+            return cam
+        } catch (error) {
+            navigate('/error')
+        }
+    }
+
     useEffect(() => {
         return () => {
+            let newCamera: Camera;
             if (location && location.state && location.state.camera) {
-                let newCamera: Camera = new Camera(location.state.camera)
+                newCamera = new Camera(location.state.camera)
                 setCamera(newCamera)
-            } else {
-                let camera = getCamera(id)
-                camera.then(camera => setCamera(camera))
-                camera.catch((error) => {console.log(error); navigate('/error')})
-            }
+                updateIsRecording(newCamera)
+            } else
+                fetchCamera()
+                    .then((cam: Camera) => updateIsRecording(cam))
+                    .catch(() => navigate('/error'))
         };
     }, []);
 
-    return (
-        <div>
-            {camera && <h1>{ camera.getName() }</h1>}
-        </div>
-    )
+    let render = null
+
+    if (camera) {
+        render = (
+            <div>
+                <h1>{ camera.getName() }</h1>
+                <img src={ getSnapshotUrl(camera) }/>
+                <Button onClick={ switchRecording }>
+                    { isRecording ? 'Stop recording' : 'Start recording' }
+                </Button>
+            </div>
+        )
+    }
+
+    return render
 }
 
 export default SingleCamera

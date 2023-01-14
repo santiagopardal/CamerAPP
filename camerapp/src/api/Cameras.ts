@@ -35,6 +35,15 @@ export async function getCamera(cameraId: number): Promise<Camera> {
     return new Camera(cameraData)
 }
 
+export async function isRecording(camera: Camera): Promise<boolean> {
+    let { data } = await axios.get(`${API_URL}/cameras/${camera.getID()}/recording_status`)
+    return data.isRecording;
+}
+
+export function record(camera: Camera, startRecording: boolean) {
+    axios.post(`${API_URL}/cameras/${camera.getID()}/recording_status`, { record: startRecording })
+}
+
 export function getSnapshotUrl(camera: Camera) {
     return `${API_URL}/cameras/snapshot/${camera.getID()}`
 }

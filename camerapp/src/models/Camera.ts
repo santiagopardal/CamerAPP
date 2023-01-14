@@ -1,3 +1,5 @@
+import * as API from '../api/Cameras'
+
 class Camera {
 
     id: number
@@ -37,8 +39,16 @@ class Camera {
         return this.id
     }
 
+    async record(record: boolean) {
+        await API.record(this, record)
+    }
+
+    async isRecording() {
+        return await API.isRecording(this)
+    }
+
     getName(): string {
-        return this.name;
+        return this.name
     }
 
     getURL(): string {
