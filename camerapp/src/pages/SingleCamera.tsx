@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 
 function SingleCamera() {
     const [camera, setCamera] = useState<Camera>()
-    let [isRecording, setIsRecording] = useState<boolean>()
+    const [isRecording, setIsRecording] = useState<boolean>()
     let { id } = useParams()
     let location = useLocation()
     let navigate = useNavigate()
