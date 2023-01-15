@@ -1,0 +1,14 @@
+.cards {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.paginatableCards {
+    display: grid;
+    justify-content: center;
+}
+
+.pagination {
+    justify-content: right;
+}

@@ -1,9 +1,3 @@
-.cameras {
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .actions {
     align-items: center;
     display: flex;

@@ -23,10 +23,8 @@ function CameraCard(properties: {camera: Camera}) {
             <Card.Body>
                 <Card.Title>{ camera.getName() }</Card.Title>
                 <Card.Text>
-                    <div className='rows'>
-                        <span className={ connectedClass }>●</span>
-                        <p className='cameraBottomItem'>{ connectedLabel }</p>
-                    </div>
+                    <span className={ connectedClass }>●</span>
+                    <span className='cameraBottomItem'>{ connectedLabel }</span>
                 </Card.Text>
                 <Button variant="primary" href={ camera.getURL() }>Go to camera</Button>
             </Card.Body>

@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { getCameras } from '../api/Cameras'
-import Camera from "../models/Camera"
-import CameraCard from "../components/CameraCard"
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Camera from '../models/Camera'
+import CameraCard from '../components/CameraCard'
+import PaginatableCards from '../components/PaginatableCards'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import './Cameras.css'
 
 function Cameras() {
@@ -41,15 +42,17 @@ function Cameras() {
         .map((camera: Camera) => <CameraCard key={camera.getID()} camera={camera}/>)
 
     return (
-        <div>
+        <>
             <div className='actions'>
-                <Form.Control type="search" placeholder="Search" aria-label="Search" onChange={newSearchText}></Form.Control>
-                <Button variant="dark" size='sm'>Add new camera</Button>
+                <Form.Control type='search' placeholder='Search' aria-label='Search' onChange={newSearchText}></Form.Control>
+                <Button variant='dark' size='sm'>Add new camera</Button>
             </div>
-            <div className='cameras'>
-                { camerasComponents }
-            </div>
-        </div>
+            <PaginatableCards
+                fetch={ getCameras }
+                paginationSize={10}
+                createCard={(camera: Camera) => <CameraCard key={camera.getID()} camera={camera}/>}
+            />
+        </>
     )
 }
 
