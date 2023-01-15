@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Camera from '../models/Camera'
+import Camera, { CameraJSON } from '../models/Camera'
 import { useLocation, useParams } from 'react-router-dom'
 import { getCamera } from '../api/Cameras'
 import { useNavigate } from 'react-router-dom'
@@ -14,8 +14,10 @@ function SingleCamera() {
     let navigate = useNavigate()
 
     const switchRecording = () => {
-        camera.record(!isRecording);
-        setIsRecording(!isRecording)
+        if (camera) {
+            camera.record(!isRecording);
+            setIsRecording(!isRecording)
+        }
     }
 
     const updateIsRecording = (camera: Camera) => {
@@ -39,7 +41,8 @@ function SingleCamera() {
         return () => {
             let newCamera: Camera;
             if (location && location.state && location.state.camera) {
-                newCamera = new Camera(location.state.camera)
+                let cameraJson: CameraJSON = location.state.camera
+                newCamera = new Camera(cameraJson)
                 setCamera(newCamera)
                 updateIsRecording(newCamera)
             } else

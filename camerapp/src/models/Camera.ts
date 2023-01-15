@@ -1,5 +1,17 @@
 import * as API from '../api/Cameras'
 
+export interface CameraJSON {
+    id: number,
+    name: string,
+    ip: string,
+    streaming_port?: number,
+    http_port: number,
+    width: number,
+    height: number,
+    framerate: number,
+    node: number
+}
+
 class Camera {
 
     id: number
@@ -12,27 +24,16 @@ class Camera {
     framerate: number
     node: number
 
-    constructor({id, name, ip, streaming_port, http_port, width, height, framerate, node}: {
-        id: number,
-        name: string,
-        ip: string,
-        streaming_port?: number,
-        http_port: number,
-        width: number,
-        height: number,
-        framerate: number,
-        node: number
-    }
-    ) {
-        this.id = id
-        this.name = name
-        this.ip = ip
-        this.streaming_port = streaming_port
-        this.http_port = http_port
-        this.width = width
-        this.height = height
-        this.framerate = framerate
-        this.node = node
+    constructor(json: CameraJSON) {
+        this.id = json.id
+        this.name = json.name
+        this.ip = json.ip
+        this.streaming_port = json.streaming_port
+        this.http_port = json.http_port
+        this.width = json.width
+        this.height = json.height
+        this.framerate = json.framerate
+        this.node = json.node
     }
 
     getID(): number {
