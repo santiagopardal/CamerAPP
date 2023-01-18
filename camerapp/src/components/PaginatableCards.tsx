@@ -6,41 +6,48 @@ interface PaginatableArguments {
     fetch: (howMany: number, startingIndex: number) => Promise<[]>,
     createCard: (data: any) => any,
     paginationSize: number
-    sort?: (data: []) => [],
-    filter?: (data: []) => []
+    comparator?: (first: any, second: any) => number,
+    filterFunction?: (data: any) => boolean
 }
 
-function PaginatableCards({fetch, createCard, paginationSize, sort, filter}: PaginatableArguments) {
-    const [data, setData] = useState([])
-    const [index, setIndex] = useState(0)
-    const [cards, setCards] = useState([]);
+const fetchData = async ({fetch, filterFunction, comparator, paginationSize}: PaginatableArguments, index: number) => {
+    let data = await fetch(paginationSize, index)
+    return data.filter(filterFunction).sort(comparator)
+}
 
-    sort = sort == null ? data => data : sort
-    filter = filter == null ? data => data : filter
+function PaginatableCards(props: PaginatableArguments) {
+    const [data, setData] = useState([])
+    const [index, setIndex] = useState(1)
+    const [cards, setCards] = useState<React.Component[]>([]);
+
+    let args = {...props}
+
+    args.comparator = props.comparator == null ? () => 0 : props.comparator
+    args.filterFunction = props.filterFunction == null ? () => true : props.filterFunction
 
     useEffect(() => {
-        return () => {
-            fetch(paginationSize, index)
-                .then(data => filter(data))
-                .then(data => sort(data))
-                .then(fetchedData => {
-                    setData(fetchedData)
-                    let cardsToSet = fetchedData.map(pieceOfData => createCard(pieceOfData))
-                    setCards(cardsToSet)
-                })
-        };
-    }, [index]);
-
+        fetchData(args, index)
+            .then(data => {
+                setData(data)
+                let newCards = data.map(
+                    pieceOfData => props.createCard(pieceOfData)
+                )
+                setCards(newCards)
+            })
+    }, [index, props.filterFunction])
 
     return (
         <div className='paginatableCards'>
             <div className='cards'>
                 {cards}
+                {cards.length === 0 &&
+                <h1>Ooops, nothing here. Try searching something different...</h1>
+                }
             </div>
             <div className='pagination'>
                 <Pagination
                     onChange={ (event, index) => setIndex(index) }
-                    count={Math.ceil(data.length / paginationSize)}
+                    count={Math.ceil(data.length / args.paginationSize)}
                 />
             </div>
         </div>
