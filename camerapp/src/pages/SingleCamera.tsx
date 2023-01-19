@@ -4,7 +4,6 @@ import { useLocation, useParams } from 'react-router-dom'
 import { getCamera } from '../api/Cameras'
 import { useNavigate } from 'react-router-dom'
 import { getSnapshotUrl } from '../api/Cameras'
-import Button from 'react-bootstrap/Button'
 import { Switch } from 'antd';
 
 function SingleCamera() {
