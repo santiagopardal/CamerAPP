@@ -5,6 +5,7 @@ import { getCamera } from '../api/Cameras'
 import { useNavigate } from 'react-router-dom'
 import { getSnapshotUrl } from '../api/Cameras'
 import Button from 'react-bootstrap/Button'
+import { Switch } from 'antd';
 
 function SingleCamera() {
     const [camera, setCamera] = useState<Camera>()
@@ -31,6 +32,7 @@ function SingleCamera() {
         try {
             let cam = await getCamera(id)
             setCamera(cam)
+            updateIsRecording(cam)
             return cam
         } catch (error) {
             navigate('/error')
@@ -38,31 +40,27 @@ function SingleCamera() {
     }
 
     useEffect(() => {
-        return () => {
-            let newCamera: Camera;
-            if (location && location.state && location.state.camera) {
-                let cameraJson: CameraJSON = location.state.camera
-                newCamera = new Camera(cameraJson)
-                setCamera(newCamera)
-                updateIsRecording(newCamera)
-            } else
-                fetchCamera()
-                    .then((cam: Camera) => updateIsRecording(cam))
-                    .catch(() => navigate('/error'))
-        };
-    }, []);
+        if (location && location.state && location.state.camera) {
+            let cameraJson: CameraJSON = location.state.camera
+            let newCamera = new Camera(cameraJson)
+            setCamera(newCamera)
+            updateIsRecording(newCamera)
+        } else
+            fetchCamera()
+    }, [])
 
     let render = null
 
     if (camera) {
         render = (
-            <div>
+            <>
                 <h1>{ camera.getName() }</h1>
                 <img src={ getSnapshotUrl(camera) }/>
-                <Button onClick={ switchRecording }>
-                    { isRecording ? 'Stop recording' : 'Start recording' }
-                </Button>
-            </div>
+                <div>
+                    <span>Recording</span>
+                    <Switch checked={ isRecording } onChange={ switchRecording }></Switch>
+                </div>
+            </>
         )
     }
 
