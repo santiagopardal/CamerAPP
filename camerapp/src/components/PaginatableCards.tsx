@@ -12,7 +12,7 @@ interface PaginatableArguments {
 
 const fetchData = async ({fetch, filterFunction, comparator, paginationSize}: PaginatableArguments, index: number) => {
     let data = await fetch(paginationSize, index)
-    return data.filter(filterFunction).sort(comparator)
+    return data.sort(comparator).filter(filterFunction)
 }
 
 function PaginatableCards(props: PaginatableArguments) {
@@ -34,7 +34,7 @@ function PaginatableCards(props: PaginatableArguments) {
                 )
                 setCards(newCards)
             })
-    }, [index, props.filterFunction])
+    }, [index, props.filterFunction, props.fetch])
 
     return (
         <div className='paginatableCards'>
