@@ -12,7 +12,7 @@ import SpeedDialIcon from '@mui/material/SpeedDialIcon'
 function Cameras() {
     const [filterFunction, setFilterFunction] = useState<(camera: Camera) => boolean>()
 
-    const newTextSearch = (searcher) => {
+    const newTextSearch = (searcher: any) => {
         let text = searcher ? searcher.target.value : null
         let filter = (camera: Camera) => true
         if (text != '') {
@@ -31,7 +31,7 @@ function Cameras() {
                 <Form.Control type='search' placeholder='Search' aria-label='Search' onChange={newTextSearch}></Form.Control>
             </div>
             <PaginatableCards
-                fetch={ getCameras }
+                fetch={ (howMany: number, startingIndex: number) => getCameras() }
                 paginationSize={10}
                 createCard={ (camera: Camera) => <CameraCard key={camera.getID()} camera={camera}/> }
                 filterFunction={ filterFunction }

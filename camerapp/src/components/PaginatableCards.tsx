@@ -3,11 +3,11 @@ import Pagination from '@mui/material/Pagination'
 import './PaginatableCards.css'
 
 interface PaginatableArguments {
-    fetch: (howMany: number, startingIndex: number) => Promise<[]>,
+    fetch: (howMany: number, startingIndex: number) => Promise<any[]>,
     createCard: (data: any) => any,
     paginationSize: number
     comparator?: (first: any, second: any) => number,
-    filterFunction?: (data: any) => boolean
+    filterFunction?: (element: any, index: number, array: any[]) => boolean
 }
 
 const fetchData = async ({fetch, filterFunction, comparator, paginationSize}: PaginatableArguments, index: number) => {
@@ -16,8 +16,8 @@ const fetchData = async ({fetch, filterFunction, comparator, paginationSize}: Pa
 }
 
 function PaginatableCards(props: PaginatableArguments) {
-    const [data, setData] = useState([])
-    const [index, setIndex] = useState(1)
+    const [data, setData] = useState<any>([])
+    const [index, setIndex] = useState<number>(1)
     const [cards, setCards] = useState<React.Component[]>([]);
 
     let args = {...props}
@@ -40,9 +40,7 @@ function PaginatableCards(props: PaginatableArguments) {
         <div className='paginatableCards'>
             <div className='cards'>
                 {cards}
-                {cards.length === 0 &&
-                <h1>Ooops, nothing here. Try searching something different...</h1>
-                }
+                { cards.length === 0 && <h1>Ooops, nothing here. Try searching something different...</h1> }
             </div>
             <div className='pagination'>
                 <Pagination
