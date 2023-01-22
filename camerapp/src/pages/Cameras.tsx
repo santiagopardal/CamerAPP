@@ -9,19 +9,25 @@ import './Cameras.css'
 import { SpeedDial } from '@mui/material'
 import SpeedDialIcon from '@mui/material/SpeedDialIcon'
 
+const createFilterFunction = (text: string) => {
+    let filter = (camera: Camera) => true
+    if (text != '') {
+        filter = (camera: Camera) => {
+            let cameraName = camera.getName().toLowerCase()
+            text = text.toLowerCase()
+            return cameraName.includes(text)
+        }
+    }
+
+    return filter
+}
+
 function Cameras() {
     const [filterFunction, setFilterFunction] = useState<(camera: Camera) => boolean>()
 
     const newTextSearch = (searcher: any) => {
-        let text = searcher ? searcher.target.value : null
-        let filter = (camera: Camera) => true
-        if (text != '') {
-            filter = (camera: Camera) => {
-                let cameraName = camera.getName().toLowerCase()
-                text = text.toLowerCase()
-                return cameraName.includes(text)
-            }
-        }
+        let text = searcher ? searcher.target.value : ''
+        let filter = createFilterFunction(text)
         setFilterFunction(() => filter)
     }
 
