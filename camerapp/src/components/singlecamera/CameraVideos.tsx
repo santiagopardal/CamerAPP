@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {DownloadOutlined} from '@ant-design/icons'
 import {Collapse, DatePicker} from 'antd'
-import {Video, getVideos, download} from '../../api/Videos'
+import {Video, download} from '../../api/Videos'
 import Camera from '../../models/Camera'
-import moment from 'moment'
+import useCameraVideos from '../../hooks/useCameraVideos'
 import Pagination from '@mui/material/Pagination'
 
 const { RangePicker } = DatePicker
@@ -29,35 +29,9 @@ const createVideoPanel = (camera: Camera, video: Video) =>
     />
 
 function CameraVideos({ camera }: { camera: Camera }) {
-    const [dates, setDates] = useState<string[]>()
+    const [dates, setDates] = useState<string[]>([])
     const [index, setIndex] = useState<number>(1)
-    const [videos, setVideos] = useState<Video[]>([])
-    const [videosToDisplay,  setVideosToDisplay] = useState<Video[]>([])
-
-    useEffect(() => {
-        let startDate = undefined
-        let endDate = undefined
-
-        if (dates) {
-            let datesToTransform = dates.map(
-                date => moment(date, 'DD/MM/YYYY').format('DD-MM-YYYY').toString()
-            )
-            startDate = datesToTransform[0]
-            endDate = datesToTransform[1]
-        }
-
-        let videos = getVideos(camera, startDate, endDate)
-        videos.then(setVideos)
-    }, [dates])
-
-    useEffect(() =>
-        setVideosToDisplay(
-            videos.slice(
-                ((index - 1) * PAGINATION_SIZE),
-                index * PAGINATION_SIZE
-            )
-        ), [index, videos]);
-
+    const [videos, videosToDisplay] = useCameraVideos(camera, dates, index, PAGINATION_SIZE)
 
     return (
         <>
