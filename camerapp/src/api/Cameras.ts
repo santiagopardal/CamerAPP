@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Camera from '../models/Camera'
-import { CameraJSON } from '../models/Camera'
+import {CameraJSON} from '../models/Camera'
 import API_URL from '../CamerAIConstants'
 
 export async function getCameras(): Promise<Camera[]> {

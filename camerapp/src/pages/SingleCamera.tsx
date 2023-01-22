@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import Camera, { CameraJSON } from '../models/Camera'
-import { useLocation, useParams } from 'react-router-dom'
-import { getCamera } from '../api/Cameras'
-import { useNavigate } from 'react-router-dom'
-import { getSnapshotUrl } from '../api/Cameras'
-import { Switch } from 'antd';
+import React, {useState, useEffect} from 'react'
+import Camera, {CameraJSON} from '../models/Camera'
+import {useLocation, useParams} from 'react-router-dom'
+import {getCamera} from '../api/Cameras'
+import {useNavigate} from 'react-router-dom'
+import {getSnapshotUrl} from '../api/Cameras'
+import {Switch} from 'antd'
+import CameraVideos from '../components/singlecamera/CameraVideos'
 
 function SingleCamera() {
     const [camera, setCamera] = useState<Camera>()
@@ -57,6 +58,7 @@ function SingleCamera() {
                     <span>Recording</span>
                     <Switch checked={ isRecording } onChange={ switchRecording }></Switch>
                 </div>
+                <CameraVideos camera={camera}/>
             </>
         }
         </>
