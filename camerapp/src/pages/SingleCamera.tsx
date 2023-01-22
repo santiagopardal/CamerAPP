@@ -27,9 +27,9 @@ function SingleCamera() {
             .catch(() => navigate('/error'))
     }
 
-    const fetchCamera = async () => {
+    const updateCamera = async (camera?: Camera) => {
         try {
-            let cam = await getCamera(id)
+            let cam = camera ? camera : await getCamera(id)
             setCamera(cam)
             updateIsRecording(cam)
             return cam
@@ -39,19 +39,17 @@ function SingleCamera() {
     }
 
     useEffect(() => {
+        let newCamera
         if (location && location.state && location.state.camera) {
             let cameraJson: CameraJSON = location.state.camera
-            let newCamera = new Camera(cameraJson)
-            setCamera(newCamera)
-            updateIsRecording(newCamera)
-        } else
-            fetchCamera()
+            newCamera = new Camera(cameraJson)
+        }
+        updateCamera(newCamera)
     }, [])
 
-    let render = null
-
-    if (camera) {
-        render = (
+    return (
+        <>
+        {camera &&
             <>
                 <h1>{ camera.getName() }</h1>
                 <img src={ getSnapshotUrl(camera) }/>
@@ -60,10 +58,9 @@ function SingleCamera() {
                     <Switch checked={ isRecording } onChange={ switchRecording }></Switch>
                 </div>
             </>
-        )
-    }
-
-    return render
+        }
+        </>
+    )
 }
 
 export default SingleCamera

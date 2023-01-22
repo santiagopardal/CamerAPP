@@ -26,7 +26,7 @@ function Cameras() {
     }
 
     return (
-        <>
+        <div className='cameras'>
             <div className='actions'>
                 <Form.Control type='search' placeholder='Search' aria-label='Search' onChange={newTextSearch}></Form.Control>
             </div>
@@ -41,7 +41,7 @@ function Cameras() {
                 sx={{ position: 'absolute', bottom: 16, right: 16 }}
                 icon={<SpeedDialIcon />}
             />
-        </>
+        </div>
     )
 }
 

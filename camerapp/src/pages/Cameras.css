@@ -1,5 +1,8 @@
 .actions {
-    align-items: center;
-    display: flex;
-    max-width: 40rem;
+    width: 100%;
+}
+
+.form-control {
+    margin: auto;
+    width: 40rem;
 }
