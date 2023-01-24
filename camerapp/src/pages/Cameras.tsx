@@ -40,8 +40,8 @@ function Cameras() {
                 fetch={ (howMany: number, startingIndex: number) => getCameras() }
                 paginationSize={ 10 }
                 createCard={ (camera: Camera) => <CameraCard key={camera.getID()} camera={camera}/> }
-                filterFunction={ () => filterFunction }
-                comparator={ () => comparator }
+                filterFunction={ filterFunction }
+                comparator={ comparator }
             />
         </div>
     )
