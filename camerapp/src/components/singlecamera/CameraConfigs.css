@@ -1,0 +1,22 @@
+.configsTitle {
+}
+
+.configs {
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 0.2rem 2rem 0.1rem #7C7C7C;
+    border-radius: 1rem;
+    width: 30rem;
+    min-width: 1rem;
+}
+
+.configsContent {
+    display: flex;
+    justify-content: flex-start;
+    align-content: space-around;
+    margin: 1rem;
+}
+
+.configsContent span  {
+    margin-left: 0.75rem;
+}
