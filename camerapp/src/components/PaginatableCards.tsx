@@ -33,7 +33,7 @@ function PaginatableCards(props: PaginatableArguments) {
         <div className='paginatableCards'>
             <div className='cards'>
                 <>
-                    { cards }
+                    { cards.length > 0 && cards }
                     { cards.length === 0 && <h1>Ooops, nothing here. Try searching something different...</h1> }
                 </>
             </div>

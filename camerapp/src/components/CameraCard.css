@@ -49,11 +49,11 @@
 }
 
 .button:focus {
-    background-color: initial;
-    border-color: initial;
+    background-color: #1D263B;
+    border-color: #1D263B;
 }
 
 .button:active {
-    background-color: initial;
-    border-color: initial;
+    background-color: #1D263B;
+    border-color: #1D263B;
 }

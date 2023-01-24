@@ -1,8 +1,13 @@
 .actions {
     width: 100%;
+    margin: 1rem;
 }
 
 .form-control {
     margin: auto;
-    width: 40rem;
+    width: 35%;
+}
+
+.cameras {
+    margin-top: 2rem;
 }
