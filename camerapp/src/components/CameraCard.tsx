@@ -26,7 +26,7 @@ function CameraCard(properties: {camera: Camera}) {
                     <span className={ connectedClass }>●</span>
                     <span className='cameraBottomItem'>{ connectedLabel }</span>
                 </Card.Text>
-                <Button variant="primary" href={ camera.getURL() }>Go to camera</Button>
+                <Button className='button' variant="primary" href={ camera.getURL() }>Go to camera</Button>
             </Card.Body>
         </Card>
     )

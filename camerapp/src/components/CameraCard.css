@@ -36,3 +36,24 @@
     pointer-events: none;
     color: grey;
 }
+
+.button {
+    background-color: #1D263B;
+    border-color: #1D263B;
+}
+
+.button:hover {
+    background-color: #1D263B;
+    border-color: #1D263B;
+    filter: brightness(140%);
+}
+
+.button:focus {
+    background-color: initial;
+    border-color: initial;
+}
+
+.button:active {
+    background-color: initial;
+    border-color: initial;
+}
