@@ -7,10 +7,10 @@ import PaginatableCards from '../components/PaginatableCards'
 import Form from 'react-bootstrap/Form'
 import './Cameras.css'
 
-const createFilterFunction = (text: string): (camera: Camera) => boolean => {
-    let filter = (camera: Camera) => true
+const createFilterFunction = (text: string): () => (camera: Camera) => boolean => {
+    let filter = () => (camera: Camera) => true
     if (text != '') {
-        filter = (camera: Camera) => {
+        filter = () => (camera: Camera) => {
             let cameraName = camera.getName().toLowerCase()
             text = text.toLowerCase()
             return cameraName.includes(text)
@@ -28,7 +28,7 @@ function Cameras() {
     const newTextSearch = (searcher: any) => {
         let text = searcher ? searcher.target.value : ''
         let filter = createFilterFunction(text)
-        setFilterFunction(() => filter)
+        setFilterFunction(filter)
     }
 
     return (
