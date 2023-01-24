@@ -37,23 +37,11 @@
     color: grey;
 }
 
-.button {
-    background-color: #1D263B;
-    border-color: #1D263B;
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #1D263B !important;
+    border-color: #1D263B !important;
 }
 
 .button:hover {
-    background-color: #1D263B;
-    border-color: #1D263B;
     filter: brightness(140%);
-}
-
-.button:focus {
-    background-color: #1D263B;
-    border-color: #1D263B;
-}
-
-.button:active {
-    background-color: #1D263B;
-    border-color: #1D263B;
 }
