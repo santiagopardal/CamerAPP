@@ -31,7 +31,7 @@ const createVideoPanel = (camera: Camera, video: Video) =>
 function CameraVideos({ camera }: { camera: Camera }) {
     const [dates, setDates] = useState<string[]>([])
     const [index, setIndex] = useState<number>(1)
-    const [videos, videosToDisplay] = useCameraVideos(camera, dates, index, PAGINATION_SIZE)
+    const [videosToDisplay, numberOfPages] = useCameraVideos(camera, dates, index, PAGINATION_SIZE)
 
     return (
         <>
@@ -49,7 +49,7 @@ function CameraVideos({ camera }: { camera: Camera }) {
                 videosToDisplay.length > PAGINATION_SIZE &&
                 <Pagination
                     onChange={ (event, index) => setIndex(index) }
-                    count={Math.ceil(videos.length / PAGINATION_SIZE)}
+                    count={ numberOfPages }
                 />
             }
         </>

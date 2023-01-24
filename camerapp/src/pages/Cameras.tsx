@@ -6,10 +6,8 @@ import CameraCard from '../components/CameraCard'
 import PaginatableCards from '../components/PaginatableCards'
 import Form from 'react-bootstrap/Form'
 import './Cameras.css'
-import { SpeedDial } from '@mui/material'
-import SpeedDialIcon from '@mui/material/SpeedDialIcon'
 
-const createFilterFunction = (text: string) => {
+const createFilterFunction = (text: string): (camera: Camera) => boolean => {
     let filter = (camera: Camera) => true
     if (text != '') {
         filter = (camera: Camera) => {
@@ -22,8 +20,10 @@ const createFilterFunction = (text: string) => {
     return filter
 }
 
+const comparator = () => 0
+
 function Cameras() {
-    const [filterFunction, setFilterFunction] = useState<(camera: Camera) => boolean>()
+    const [filterFunction, setFilterFunction] = useState<(camera: Camera) => boolean>(createFilterFunction(''))
 
     const newTextSearch = (searcher: any) => {
         let text = searcher ? searcher.target.value : ''
@@ -38,14 +38,10 @@ function Cameras() {
             </div>
             <PaginatableCards
                 fetch={ (howMany: number, startingIndex: number) => getCameras() }
-                paginationSize={10}
+                paginationSize={ 10 }
                 createCard={ (camera: Camera) => <CameraCard key={camera.getID()} camera={camera}/> }
-                filterFunction={ filterFunction }
-            />
-            <SpeedDial
-                ariaLabel="SpeedDial controlled open example"
-                sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                icon={<SpeedDialIcon />}
+                filterFunction={ () => filterFunction }
+                comparator={ () => comparator }
             />
         </div>
     )
