@@ -4,6 +4,7 @@ import useCameraStatus from '../hooks/useCameraStatus'
 import {getSnapshotUrl} from '../api/Cameras'
 import {Switch} from 'antd'
 import CameraVideos from '../components/singlecamera/CameraVideos'
+import './SingleCamera.css'
 
 function SingleCamera() {
     let { id } = useParams()
@@ -17,15 +18,22 @@ function SingleCamera() {
     }
 
     return camera && (
-        <>
-            <h1>{ camera.getName() }</h1>
-            <img src={ getSnapshotUrl(camera) }/>
-            <div>
-                <span>Recording</span>
-                <Switch checked={ isRecording } onChange={ switchRecording }></Switch>
+        <div className='singleCamera'>
+            <h1 className='pageTitle'>{ camera.getName() }</h1>
+            <div className='content'>
+                <div className='cameraAndConfigs'>
+                    <img className='image'src={ getSnapshotUrl(camera) }/>
+                    <div className='configs'>
+                        <h4 className='configsTitle'>Configurations</h4>
+                        <div className='configsContent'>
+                            <Switch checked={ isRecording } onChange={ switchRecording }></Switch>
+                            <span>Recording</span>
+                        </div>
+                    </div>
+                </div>
+                <CameraVideos camera={camera}/>
             </div>
-            <CameraVideos camera={camera}/>
-        </>
+        </div>
     )
 }
 

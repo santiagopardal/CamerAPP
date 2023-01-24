@@ -1,0 +1,59 @@
+.singleCamera {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.recordingBox {
+    display: flex;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cameraAndConfigs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.image {
+    border-radius: 1.5rem;
+    max-width: 60rem;
+    box-shadow: 0.2rem 0.2rem 2rem 0.1rem #B9BAA3;
+    transition:0.5s;
+    width: 50%;
+}
+
+.image:hover {
+    transform: scale(1.07);
+}
+
+.configsTitle {
+}
+
+.configs {
+    padding: 1rem;
+    background-color: #B9BAA3;
+    border-radius: 1rem;
+    width: 30rem;
+    min-width: 1rem;
+}
+
+.configsContent {
+    display: flex;
+    justify-content: flex-start;
+    align-content: space-around;
+    margin: 1rem;
+}
+
+.configsContent span  {
+    margin-left: 0.75rem;
+}
+
+.pageTitle {
+
+}
