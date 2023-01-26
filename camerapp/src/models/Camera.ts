@@ -40,8 +40,8 @@ class Camera {
         return this.id
     }
 
-    async record(record: boolean) {
-        await API.record(this, record)
+    async record(record: boolean): Promise<boolean> {
+        return await API.record(this, record)
     }
 
     async isRecording() {

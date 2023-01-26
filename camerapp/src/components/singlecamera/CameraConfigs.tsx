@@ -8,10 +8,12 @@ import './CameraConfigs.css'
 function CameraConfigs({ camera }: { camera: Camera }) {
     const [setIsRecording, isRecording] = useCameraConfigs(camera)
 
-    const switchRecording = () => {
+    const switchRecording = async () => {
         if (camera) {
-            camera.record(!isRecording);
             setIsRecording(!isRecording)
+            let recordingAfterRequest = await camera.record(!isRecording)
+            if (recordingAfterRequest === !isRecording)
+                setIsRecording(recordingAfterRequest)
         }
     }
 
