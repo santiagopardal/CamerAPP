@@ -22,7 +22,7 @@ const useCameraVideos = (camera: Camera, dates: string[], index: number, paginat
             let startDate = undefined
             let endDate = undefined
 
-            if (dates.length > 0) {
+            if (dates.length > 0 && dates[0] !== '' && dates[1] !== '') {
                 let datesToTransform = dates.map(
                     date => moment(date, 'DD/MM/YYYY').format('DD-MM-YYYY').toString()
                 )
