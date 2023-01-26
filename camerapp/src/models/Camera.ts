@@ -56,8 +56,8 @@ class Camera {
         return `http://${this.ip}:${this.http_port}`
     }
 
-    isOnline(): boolean {
-        return true
+    async isOnline(): Promise<boolean> {
+        return await API.isOnline(this)
     }
 }
 

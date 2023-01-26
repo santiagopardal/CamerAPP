@@ -15,6 +15,11 @@ export async function getCamera(cameraId: number): Promise<Camera> {
     return new Camera(cameraData)
 }
 
+export async function isOnline(camera: Camera): Promise<boolean> {
+    let { data } = await axios.get(`${API_URL}/cameras/${camera.getID()}/is_online`)
+    return data.isOnline
+}
+
 export async function isRecording(camera: Camera): Promise<boolean> {
     let { data } = await axios.get(`${API_URL}/cameras/${camera.getID()}/recording_status`)
     return data.isRecording;

@@ -6,11 +6,13 @@ import Button from 'react-bootstrap/Button'
 import './CameraCard.css'
 import { useNavigate } from 'react-router-dom'
 import { getSnapshotUrl } from '../api/Cameras'
+import useCameraConfigs from '../hooks/useCameraConfigs'
 
 function CameraCard(properties: {camera: Camera}) {
     let camera: Camera = properties.camera
-    let connectedClass = `status ${camera.isOnline() ? 'connectedStatus' : 'disconnectedStatus'}`
-    let connectedLabel = camera.isOnline() ? 'Online' : 'Offline'
+    let [setIsRecording, isRecording, isOnline] = useCameraConfigs(camera)
+    let connectedClass = `status ${isOnline ? 'connectedStatus' : 'disconnectedStatus'}`
+    let connectedLabel = isOnline ? 'Online' : 'Offline'
     let navigate = useNavigate()
 
     const openCamera = () => {
@@ -19,7 +21,7 @@ function CameraCard(properties: {camera: Camera}) {
 
     return (
         <Card className='camera' onClick={ openCamera }>
-            <Card.Img variant="top" src={ getSnapshotUrl(camera) }/>
+            {isOnline && <Card.Img variant="top" src={ getSnapshotUrl(camera) }/>}
             <Card.Body>
                 <Card.Title>{ camera.getName() }</Card.Title>
                 <Card.Text>
