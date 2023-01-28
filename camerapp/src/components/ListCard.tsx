@@ -15,9 +15,7 @@ export default function ListCard({ title, imageSource, children, onClick }: Card
             {imageSource && <Card.Img variant="top" src={ imageSource }/>}
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Text>
-                    { children }
-                </Card.Text>
+                { children }
             </Card.Body>
         </Card>
     )
