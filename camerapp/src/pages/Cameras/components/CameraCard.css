@@ -1,0 +1,33 @@
+.cardContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.connectionStatus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.disconnectedStatus, .connectedStatus {
+    margin-right: 0.3rem;
+}
+
+.disconnectedStatus {
+    color: red;
+}
+
+.connectedStatus {
+    color: green;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #1D263B !important;
+    border-color: #1D263B !important;
+}
+
+.button:hover {
+    filter: brightness(140%);
+}

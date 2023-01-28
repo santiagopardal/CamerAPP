@@ -1,10 +1,10 @@
 import React from 'react'
-import { getCameras } from '../api/Cameras'
-import Camera from '../models/Camera'
-import SearchablePaginatableCards from '../components/SearchablePaginatableCards'
+import { getCameras } from '../../api/Cameras'
+import Camera from '../../models/Camera'
+import SearchablePaginatableCards from '../../components/SearchablePaginatableCards'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Cameras.css'
-import CameraCard from '../components/CameraCard'
+import CameraCard from './components/CameraCard'
 
 function Cameras() {
     return <SearchablePaginatableCards

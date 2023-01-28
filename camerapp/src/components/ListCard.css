@@ -1,0 +1,16 @@
+.card {
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+    border-radius: 0.6rem;
+    width: 18rem;
+    height: 25rem;
+    transition:0.3s;
+}
+
+.card:hover {
+    padding-top: 1rem;
+    transform: scale(1.03);
+    cursor: pointer;
+}

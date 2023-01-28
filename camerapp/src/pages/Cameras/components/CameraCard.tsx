@@ -1,12 +1,12 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Camera from '../models/Camera'
-import Card from 'react-bootstrap/Card'
+import Camera from '../../../models/Camera'
 import Button from 'react-bootstrap/Button'
 import './CameraCard.css'
 import { useNavigate } from 'react-router-dom'
-import { getSnapshotUrl } from '../api/Cameras'
-import useCameraConfigs from '../hooks/useCameraConfigs'
+import { getSnapshotUrl } from '../../../api/Cameras'
+import useCameraConfigs from '../../../hooks/useCameraConfigs'
+import ListCard from '../../../components/ListCard'
 
 function CameraCard(properties: {camera: Camera}) {
     let camera: Camera = properties.camera
@@ -20,17 +20,19 @@ function CameraCard(properties: {camera: Camera}) {
     }
 
     return (
-        <Card className='camera' onClick={ openCamera }>
-            {isOnline && <Card.Img variant="top" src={ getSnapshotUrl(camera) }/>}
-            <Card.Body>
-                <Card.Title>{ camera.getName() }</Card.Title>
-                <Card.Text>
+        <ListCard
+            title={ camera.getName() }
+            imageSource={ isOnline ? getSnapshotUrl(camera) : undefined }
+            onClick={ openCamera }
+        >
+            <div className='cardContent'>
+                <div className='connectionStatus'>
                     <span className={ connectedClass }>●</span>
-                    <span className='cameraBottomItem'>{ connectedLabel }</span>
-                </Card.Text>
+                    <span>{ connectedLabel }</span>
+                </div>
                 <Button className='button' variant="primary" href={ camera.getURL() }>Go to camera</Button>
-            </Card.Body>
-        </Card>
+            </div>
+        </ListCard>
     )
 }
 

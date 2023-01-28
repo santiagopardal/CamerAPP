@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Cameras from './pages/Cameras'
-import SingleCamera from './pages/SingleCamera'
-import Error from './pages/Error'
-import Nodes from './pages/Nodes'
+import Home from './pages/Home/Home'
+import Login from './pages/Login/Login'
+import Cameras from './pages/Cameras/Cameras'
+import SingleCamera from './pages/SingleCamera/SingleCamera'
+import Error from './pages/Error/Error'
+import Nodes from './pages/Nodes/Nodes'
 
 function CamerAIRoutes() {
     return (

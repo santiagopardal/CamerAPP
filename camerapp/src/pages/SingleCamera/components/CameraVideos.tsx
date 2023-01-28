@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {DownloadOutlined} from '@ant-design/icons'
 import {Collapse, DatePicker} from 'antd'
-import {Video, download} from '../../api/Videos'
-import Camera from '../../models/Camera'
-import useCameraVideos from '../../hooks/useCameraVideos'
+import {Video, download} from '../../../api/Videos'
+import Camera from '../../../models/Camera'
+import useCameraVideos from '../../../hooks/useCameraVideos'
 import Pagination from '@mui/material/Pagination'
 import './CameraVideos.css'
 

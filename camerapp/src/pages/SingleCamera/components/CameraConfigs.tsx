@@ -1,7 +1,7 @@
 import React from 'react'
-import Camera from '../../models/Camera'
+import Camera from '../../../models/Camera'
 import {Switch} from 'antd'
-import useCameraConfigs from '../../hooks/useCameraConfigs'
+import useCameraConfigs from '../../../hooks/useCameraConfigs'
 import './CameraConfigs.css'
 
 

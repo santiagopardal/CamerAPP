@@ -1,7 +1,7 @@
 import React from 'react'
-import SearchablePaginatableCards from '../components/SearchablePaginatableCards'
-import {Node, getNodes} from '../api/Nodes'
-import NodeCard from '../components/NodeCard'
+import SearchablePaginatableCards from '../../components/SearchablePaginatableCards'
+import {Node, getNodes} from '../../api/Nodes'
+import NodeCard from './components/NodeCard'
 
 
 export default function Nodes() {

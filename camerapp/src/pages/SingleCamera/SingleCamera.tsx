@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {useLocation, useNavigate, useParams} from 'react-router-dom'
-import {getCamera} from '../api/Cameras'
-import {getSnapshotUrl} from '../api/Cameras'
-import CameraConfigs from '../components/singlecamera/CameraConfigs'
-import CameraVideos from '../components/singlecamera/CameraVideos'
+import {getCamera} from '../../api/Cameras'
+import {getSnapshotUrl} from '../../api/Cameras'
+import CameraConfigs from './components/CameraConfigs'
+import CameraVideos from './components/CameraVideos'
 import './SingleCamera.css'
-import Camera from '../models/Camera'
+import Camera from '../../models/Camera'
 
 function SingleCamera() {
     let { id } = useParams()
