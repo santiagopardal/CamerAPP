@@ -1,13 +1,13 @@
 import React from 'react'
-import NavBar from './CamerAINavBar'
 import CamerAIRoutes from './Routes'
 import {Layout} from 'antd'
 import {Content} from 'antd/es/layout/layout'
+import CamerAINavBar from "./CamerAINavBar";
 
 function App() {
     return (
         <>
-            <NavBar/>
+            <CamerAINavBar/>
             <Layout className="site-layout">
                 <Content>
                     <CamerAIRoutes/>

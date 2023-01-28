@@ -36,7 +36,7 @@ function SingleCamera() {
                 <CameraVideos camera={camera}/>
             </div>
         </div>
-    )
+    ) || <></>
 }
 
 export default SingleCamera
