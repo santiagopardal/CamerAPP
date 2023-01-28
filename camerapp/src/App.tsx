@@ -2,7 +2,7 @@ import React from 'react'
 import CamerAIRoutes from './Routes'
 import {Layout} from 'antd'
 import {Content} from 'antd/es/layout/layout'
-import CamerAINavBar from "./CamerAINavBar";
+import CamerAINavBar from './components/CamerAINavBar'
 
 function App() {
     return (

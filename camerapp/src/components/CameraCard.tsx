@@ -10,7 +10,7 @@ import useCameraConfigs from '../hooks/useCameraConfigs'
 
 function CameraCard(properties: {camera: Camera}) {
     let camera: Camera = properties.camera
-    let [setIsRecording, isRecording, isOnline] = useCameraConfigs(camera)
+    let [_, __, isOnline] = useCameraConfigs(camera)
     let connectedClass = `status ${isOnline ? 'connectedStatus' : 'disconnectedStatus'}`
     let connectedLabel = isOnline ? 'Online' : 'Offline'
     let navigate = useNavigate()
