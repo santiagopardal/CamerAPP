@@ -2,21 +2,29 @@
 }
 
 .configs {
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
     background-color: white;
     box-shadow: 0 0.2rem 2rem 0.1rem #7C7C7C;
     border-radius: 1rem;
     width: 30rem;
-    min-width: 1rem;
 }
 
 .configsContent {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-content: space-around;
     margin: 1rem;
+    gap: 1rem;
 }
 
-.configsContent span  {
+.recordingSwitch {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.configsContent .recordingSwitch span  {
     margin-left: 0.75rem;
 }

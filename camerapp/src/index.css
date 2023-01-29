@@ -30,8 +30,7 @@ a:hover {
   text-decoration: none;
 }
 
-html, body, #root, #root>div, .ant-layout {
+html, body, #root, #root>div {
   font-family: 'Rubik', sans-serif;
-  height: 100%;
   background-color: #FAFAFA;
 }

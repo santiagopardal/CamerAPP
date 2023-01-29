@@ -1,18 +1,15 @@
 import React from 'react'
 import CamerAIRoutes from './Routes'
-import {Layout} from 'antd'
-import {Content} from 'antd/es/layout/layout'
 import CamerAINavBar from './components/CamerAINavBar'
+import './App.css'
 
 function App() {
     return (
         <>
             <CamerAINavBar/>
-            <Layout className="site-layout">
-                <Content>
-                    <CamerAIRoutes/>
-                </Content>
-            </Layout>
+            <div className='main-content'>
+                <CamerAIRoutes/>
+            </div>
         </>
     )
 }
