@@ -6,7 +6,7 @@ import API_URL from '../CamerAIConstants'
 export async function getCameras(): Promise<Camera[]> {
     let response = await axios.get(`${API_URL}/cameras`)
     let cameras: CameraJSON[] = response.data
-    return cameras.map(camera => new Camera(camera));
+    return cameras.map(camera => new Camera(camera))
 }
 
 export async function getCamera(cameraId: number): Promise<Camera> {

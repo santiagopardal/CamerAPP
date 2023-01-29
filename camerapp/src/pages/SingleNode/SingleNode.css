@@ -1,0 +1,13 @@
+.singleNode {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.camerasSection {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

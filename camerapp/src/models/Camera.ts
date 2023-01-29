@@ -12,7 +12,7 @@ export interface CameraJSON {
     node: number
 }
 
-class Camera {
+class Camera implements CameraJSON {
 
     id: number
     name: string
