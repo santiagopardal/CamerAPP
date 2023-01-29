@@ -9,13 +9,7 @@ const filterFunction = () => true
 
 const useCameraVideos = (camera: Camera, dates: string[], index: number, paginationSize: number): [Video[], number] => {
     const [videos, setVideos] = useState<Video[]>([])
-    const [videosToDisplay,  numberOfPages] = useSortAndFilterPaginatableItems(
-        videos,
-        comparator,
-        filterFunction,
-        index,
-        paginationSize
-        )
+    const [videosToDisplay, numberOfPages] = useSortAndFilterPaginatableItems(videos, comparator, filterFunction, index, paginationSize)
 
         useEffect(() => {
             let startDate = undefined
