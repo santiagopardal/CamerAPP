@@ -4,9 +4,8 @@ import moment from 'moment/moment'
 import Camera from '../models/Camera'
 import useSortAndFilterPaginatableItems from './useSortAndFilterPaginatableItems'
 
-const comparator = (): (first: any, second: any) => number =>
-    (first: Video, second: Video) => moment(first.day, 'DD/MM/YYYY') < moment(second.day, 'DD/MM/YYYY') ? -1 : 1
-const filterFunction = () => () => true
+const comparator = (first: Video, second: Video) => moment(first.day, 'DD/MM/YYYY') < moment(second.day, 'DD/MM/YYYY') ? -1 : 1
+const filterFunction = () => true
 
 const useCameraVideos = (camera: Camera, dates: string[], index: number, paginationSize: number): [Video[], number] => {
     const [videos, setVideos] = useState<Video[]>([])
