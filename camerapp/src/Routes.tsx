@@ -6,6 +6,7 @@ import Cameras from './pages/Cameras/Cameras'
 import SingleCamera from './pages/SingleCamera/SingleCamera'
 import Error from './pages/Error/Error'
 import Nodes from './pages/Nodes/Nodes'
+import SingleNode from './pages/SingleNode/SingleNode'
 
 function CamerAIRoutes() {
     return (
@@ -15,6 +16,7 @@ function CamerAIRoutes() {
             <Route path="/cameras" element={ <Cameras/> }/>
             <Route path="/cameras/:id" element={ <SingleCamera/> }/>
             <Route path='/nodes' element={<Nodes/>}/>
+            <Route path='/nodes/:id' element={<SingleNode/>}/>
             <Route path="/error" element={ <Error/> }/>
         </Routes>
     )

@@ -8,15 +8,15 @@ import './SingleCamera.css'
 import Camera from '../../models/Camera'
 
 function SingleCamera() {
-    let { id } = useParams()
-    let location = useLocation()
+    const { id } = useParams()
+    const location = useLocation()
     const navigate = useNavigate()
     const [camera, setCamera] = useState<Camera>()
 
     useEffect(() => {
         let cameraId = parseInt(id || '1')
 
-        if (location.state.camera)
+        if (location.state && location.state.camera)
             setCamera(new Camera(location.state.camera))
         else
             getCamera(cameraId)
