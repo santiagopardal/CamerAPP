@@ -12,7 +12,7 @@ function CamerAINavBar() {
                 <Container>
                     <Navbar.Brand>
                         <Link to='/'>
-                            Navbar
+                            CamerAI
                         </Link>
                     </Navbar.Brand>
                     <Nav className='link hover-underline-animation'>
