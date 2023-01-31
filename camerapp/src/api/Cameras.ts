@@ -20,11 +20,6 @@ export async function isOnline(camera: Camera): Promise<boolean> {
     return data.isOnline
 }
 
-export async function isRecording(camera: Camera): Promise<boolean> {
-    let { data } = await axios.get(`${API_URL}/cameras/${camera.getID()}/recording_status`)
-    return data.isRecording;
-}
-
 export async function record(camera: Camera, startRecording: boolean): Promise<boolean> {
     let { data } = await axios.post(`${API_URL}/cameras/${camera.getID()}/recording_status`, { record: startRecording })
     return data.isRecording
