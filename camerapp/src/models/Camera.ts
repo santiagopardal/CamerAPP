@@ -1,5 +1,10 @@
 import * as API from '../api/Cameras'
 
+export interface CameraConfigurations {
+    recording: boolean,
+    sensitivity: number
+}
+
 export interface CameraJSON {
     id: number,
     name: string,
@@ -9,7 +14,8 @@ export interface CameraJSON {
     width: number,
     height: number,
     framerate: number,
-    node: number
+    node: number,
+    configurations: CameraConfigurations
 }
 
 class Camera implements CameraJSON {
@@ -23,6 +29,7 @@ class Camera implements CameraJSON {
     height: number
     framerate: number
     node: number
+    configurations: CameraConfigurations
 
     constructor(json: CameraJSON) {
         this.id = json.id
@@ -34,6 +41,7 @@ class Camera implements CameraJSON {
         this.height = json.height
         this.framerate = json.framerate
         this.node = json.node
+        this.configurations = json.configurations
     }
 
     getID(): number {
@@ -58,6 +66,11 @@ class Camera implements CameraJSON {
 
     async isOnline(): Promise<boolean> {
         return await API.isOnline(this)
+    }
+
+    async save() {
+        let promise = this.id != undefined ? API.update(this) : API.save(this);
+        return await promise
     }
 }
 

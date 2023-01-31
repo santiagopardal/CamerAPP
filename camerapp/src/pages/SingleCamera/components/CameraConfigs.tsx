@@ -15,11 +15,15 @@ function CameraConfigs({ camera }: { camera: Camera }) {
             let recordingAfterRequest = await camera.record(!isRecording)
             if (recordingAfterRequest === !isRecording)
                 setIsRecording(recordingAfterRequest)
+            camera.configurations.recording = recordingAfterRequest
+            camera.save()
         }
     }
 
-    const onChange = (event: React.SyntheticEvent | Event, value: number | number[]) => {
-        console.log(value)
+    const updateSensitivity = async (_: React.SyntheticEvent | Event, value: number | number[]) => {
+        let sensitivity: number = typeof value === 'number' ? value : value[0]
+        camera.configurations.sensitivity = sensitivity / 100
+        camera.save()
     }
 
     return (
@@ -33,7 +37,7 @@ function CameraConfigs({ camera }: { camera: Camera }) {
                 <span>Running on Node {camera.node}</span>
                 <div className='recordingSwitch'>
                     <p>Movement sensitivity</p>
-                    <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" onChangeCommitted={onChange} />
+                    <Slider defaultValue={camera.configurations.sensitivity * 100} aria-label="Default" valueLabelDisplay="auto" onChangeCommitted={updateSensitivity} />
                 </div>
             </div>
         </div>

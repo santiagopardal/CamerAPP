@@ -33,3 +33,11 @@ export async function record(camera: Camera, startRecording: boolean): Promise<b
 export function getSnapshotUrl(camera: Camera) {
     return `${API_URL}/cameras/snapshot/${camera.getID()}`
 }
+
+export function save(camera: Camera) {
+    return axios.post(`${API_URL}/cameras`, camera)
+}
+
+export function update(camera: Camera) {
+    return axios.patch(`${API_URL}/cameras/${camera.id}`, camera)
+}
