@@ -52,8 +52,8 @@ class Camera implements CameraJSON {
         return await API.record(this, record)
     }
 
-    async isRecording() {
-        return await API.isRecording(this)
+    isRecording() {
+        return this.configurations.recording
     }
 
     getName(): string {
