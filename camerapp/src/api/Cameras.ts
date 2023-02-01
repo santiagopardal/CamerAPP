@@ -1,7 +1,19 @@
 import axios from 'axios'
-import Camera from '../models/Camera'
-import {CameraJSON} from '../models/Camera'
+import Camera, {CameraConfigurations} from '../models/Camera'
 import API_URL from '../CamerAIConstants'
+
+export type CameraJSON = {
+    id: number,
+    name: string,
+    ip: string,
+    streaming_port?: number,
+    http_port: number,
+    width: number,
+    height: number,
+    framerate: number,
+    node: number,
+    configurations: CameraConfigurations
+}
 
 export async function getCameras(): Promise<Camera[]> {
     let response = await axios.get(`${API_URL}/cameras`)

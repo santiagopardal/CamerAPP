@@ -5,19 +5,6 @@ export interface CameraConfigurations {
     sensitivity: number
 }
 
-export type CameraJSON = {
-    id: number,
-    name: string,
-    ip: string,
-    streaming_port?: number,
-    http_port: number,
-    width: number,
-    height: number,
-    framerate: number,
-    node: number,
-    configurations: CameraConfigurations
-}
-
 class Camera {
 
     id: number
@@ -31,7 +18,7 @@ class Camera {
     node: number
     private configurations: CameraConfigurations
 
-    constructor(json: CameraJSON) {
+    constructor(json: API.CameraJSON) {
         this.id = json.id
         this.name = json.name
         this.ip = json.ip

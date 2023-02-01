@@ -1,6 +1,7 @@
 import axios from 'axios'
 import API_URL from '../CamerAIConstants'
-import Camera, {CameraJSON} from '../models/Camera'
+import Camera from '../models/Camera'
+import { CameraJSON } from './Cameras'
 
 export interface Node {
     id: number,
