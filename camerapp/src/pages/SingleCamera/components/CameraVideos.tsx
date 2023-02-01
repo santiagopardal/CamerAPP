@@ -41,23 +41,25 @@ function CameraVideos({ camera }: { camera: Camera }) {
                 <span>Search by dates</span>
                 <RangePicker onChange={(dates, datesAsString) => setDates(datesAsString)} format={dateFormat}></RangePicker>
             </div>
-            <div className='list'>
-                <Collapse defaultActiveKey={['1']}>
+            { videosToDisplay.length > 0 &&
+                <div className='list'>
+                    <Collapse defaultActiveKey={['1']}>
+                        { videosToDisplay.map(video => createVideoPanel(camera, video)) }
+                    </Collapse>
                     {
-                        videosToDisplay.length > 0 && videosToDisplay.map(video => createVideoPanel(camera, video))
+                        videosToDisplay.length > PAGINATION_SIZE &&
+                        <Pagination
+                            onChange={ (event, index) => setIndex(index) }
+                            count={ numberOfPages }
+                        />
                     }
-                    {
-                        videosToDisplay.length === 0 && <span>No results!</span>
-                    }
-                </Collapse>
-                {
-                    videosToDisplay.length > PAGINATION_SIZE &&
-                    <Pagination
-                        onChange={ (event, index) => setIndex(index) }
-                        count={ numberOfPages }
-                    />
-                }
-            </div>
+                </div>
+            }
+            { videosToDisplay.length === 0 &&
+                <>
+                    <h5>Ooops, there seems to be no videos</h5>
+                </>
+            }
         </div>
     )
 }
