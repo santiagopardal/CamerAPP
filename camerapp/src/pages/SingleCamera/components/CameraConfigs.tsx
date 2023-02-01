@@ -37,7 +37,12 @@ function CameraConfigs({ camera }: { camera: Camera }) {
                 <span>Running on Node {camera.node}</span>
                 <div className='recordingSwitch'>
                     <p>Movement sensitivity</p>
-                    <Slider defaultValue={camera.configurations.sensitivity * 100} aria-label="Default" valueLabelDisplay="auto" onChangeCommitted={updateSensitivity} />
+                    <Slider
+                        defaultValue={camera.configurations.sensitivity * 100}
+                        aria-label="Default"
+                        valueLabelDisplay="auto"
+                        onChangeCommitted={updateSensitivity}
+                    />
                 </div>
             </div>
         </div>
