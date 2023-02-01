@@ -8,7 +8,7 @@ const useCameraConfigs = (camera: Camera): [setIsRecording: Dispatch<boolean>, i
     const navigate = useNavigate()
 
     useEffect(() => {
-        setIsRecording(camera.isRecording())
+        setIsRecording(camera.recording)
         camera.isOnline().then(setIsOnline).catch(() => navigate('/error'))
     }, []);
 

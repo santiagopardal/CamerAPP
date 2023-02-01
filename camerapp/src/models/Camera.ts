@@ -5,7 +5,7 @@ export interface CameraConfigurations {
     sensitivity: number
 }
 
-export interface CameraJSON {
+export type CameraJSON = {
     id: number,
     name: string,
     ip: string,
@@ -18,7 +18,7 @@ export interface CameraJSON {
     configurations: CameraConfigurations
 }
 
-class Camera implements CameraJSON {
+class Camera {
 
     id: number
     name: string
@@ -29,7 +29,7 @@ class Camera implements CameraJSON {
     height: number
     framerate: number
     node: number
-    configurations: CameraConfigurations
+    private configurations: CameraConfigurations
 
     constructor(json: CameraJSON) {
         this.id = json.id
@@ -44,23 +44,30 @@ class Camera implements CameraJSON {
         this.configurations = json.configurations
     }
 
-    getID(): number {
-        return this.id
-    }
-
     async record(record: boolean): Promise<boolean> {
         return await API.record(this, record)
     }
 
-    isRecording() {
+    get recording(): boolean {
         return this.configurations.recording
     }
 
-    getName(): string {
-        return this.name
+    set recording(recording: boolean) {
+        this.configurations.recording = recording
     }
 
-    getURL(): string {
+    get sensitivity(): number {
+        return this.configurations.sensitivity
+    }
+
+    set sensitivity(sensitivity: number) {
+        if (sensitivity > 1 || sensitivity < 0) {
+            throw new Error('Sensitivity must be a value between 0 and 1.')
+        }
+        this.configurations.sensitivity = sensitivity
+    }
+
+    get URL(): string {
         return `http://${this.ip}:${this.http_port}`
     }
 

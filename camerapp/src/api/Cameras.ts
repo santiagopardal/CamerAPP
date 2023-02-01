@@ -16,17 +16,17 @@ export async function getCamera(cameraId: number): Promise<Camera> {
 }
 
 export async function isOnline(camera: Camera): Promise<boolean> {
-    let { data } = await axios.get(`${API_URL}/cameras/${camera.getID()}/is_online`)
+    let { data } = await axios.get(`${API_URL}/cameras/${camera.id}/is_online`)
     return data.isOnline
 }
 
 export async function record(camera: Camera, startRecording: boolean): Promise<boolean> {
-    let { data } = await axios.post(`${API_URL}/cameras/${camera.getID()}/recording_status`, { record: startRecording })
+    let { data } = await axios.post(`${API_URL}/cameras/${camera.id}/recording_status`, { record: startRecording })
     return data.isRecording
 }
 
 export function getSnapshotUrl(camera: Camera) {
-    return `${API_URL}/cameras/snapshot/${camera.getID()}`
+    return `${API_URL}/cameras/snapshot/${camera.id}`
 }
 
 export function save(camera: Camera) {

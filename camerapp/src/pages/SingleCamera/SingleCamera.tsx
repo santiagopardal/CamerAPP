@@ -27,7 +27,7 @@ function SingleCamera() {
 
     return camera && (
         <div className='singleCamera'>
-            <h1 className='pageTitle'>{ camera.getName() }</h1>
+            <h1 className='pageTitle'>{ camera.name }</h1>
             <div className='content'>
                 <div className='cameraAndConfigs'>
                     <img className='image' src={ getSnapshotUrl(camera) }/>

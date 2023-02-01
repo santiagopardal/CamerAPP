@@ -25,7 +25,7 @@ const genDownloadButton = (camera: Camera, date: string) => (
 const createVideoPanel = (camera: Camera, video: Video) =>
     <Panel
         header={video.day}
-        key={`camera_${camera?.getID()}_${video.day}_${video.file_size}`}
+        key={`camera_${camera?.id}_${video.day}_${video.file_size}`}
         extra={genDownloadButton(camera, video.day)}
     />
 

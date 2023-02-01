@@ -8,7 +8,7 @@ export interface Video {
 }
 
 export async function getVideos(camera: Camera, from?: string, to?: string): Promise<Video[]> {
-    let endpoint = `${API_URL}/cameras/${camera.getID()}/videos`
+    let endpoint = `${API_URL}/cameras/${camera.id}/videos`
     if (from && to) {
         endpoint = `${endpoint}/from/${from}/to/${to}`
     }
@@ -17,5 +17,5 @@ export async function getVideos(camera: Camera, from?: string, to?: string): Pro
 }
 
 export async function download(camera: Camera, date: string) {
-    await axios.get(`${API_URL}/cameras/${camera.getID()}/videos/download/${date}`)
+    await axios.get(`${API_URL}/cameras/${camera.id}/videos/download/${date}`)
 }

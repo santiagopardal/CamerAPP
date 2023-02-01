@@ -16,12 +16,12 @@ function CameraCard(properties: {camera: Camera}) {
     let navigate = useNavigate()
 
     const openCamera = () => {
-        navigate(`/cameras/${camera.getID()}`, {state:{camera: camera}})
+        navigate(`/cameras/${camera.id}`, {state:{camera: camera}})
     }
 
     return (
         <ListCard
-            title={ camera.getName() }
+            title={ camera.name }
             imageSource={ isOnline ? getSnapshotUrl(camera) : undefined }
             onClick={ openCamera }
         >
@@ -30,7 +30,7 @@ function CameraCard(properties: {camera: Camera}) {
                     <span className={ connectedClass }>●</span>
                     <span>{ connectedLabel }</span>
                 </div>
-                <Button className='button' variant="primary" href={ camera.getURL() }>Go to camera</Button>
+                <Button className='button' variant="primary" href={ camera.URL }>Go to camera</Button>
             </div>
         </ListCard>
     )
