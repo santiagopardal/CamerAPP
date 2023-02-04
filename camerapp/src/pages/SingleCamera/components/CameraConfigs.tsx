@@ -4,6 +4,7 @@ import {Switch} from 'antd'
 import useCameraConfigs from '../../../hooks/useCameraConfigs'
 import './CameraConfigs.css'
 import {Slider} from '@mui/material'
+import {Link} from 'react-router-dom'
 
 
 function CameraConfigs({ camera }: { camera: Camera }) {
@@ -34,7 +35,12 @@ function CameraConfigs({ camera }: { camera: Camera }) {
                     <Switch checked={ isRecording } onChange={ switchRecording }></Switch>
                     <span>Recording</span>
                 </div>
-                <span>Running on Node {camera.node}</span>
+                <span>
+                    {'Running on '}
+                    <Link to={`/nodes/${camera.node}`}>
+                        Node {camera.node}
+                    </Link>
+                </span>
                 <div className='recordingSwitch'>
                     <p>Movement sensitivity</p>
                     <Slider

@@ -16,3 +16,21 @@
 .link {
     margin-left: 1.4rem;
 }
+
+.link > a {
+  color: #D9D9D9;
+  text-decoration: none;
+}
+
+.link > a:hover {
+  color: #FFFFFF;
+}
+
+.navbar-brand > a {
+  color: #D9D9D9;
+  text-decoration: none;
+}
+
+.navbar-brand > a:hover {
+  color: #FFFFFF;
+}
