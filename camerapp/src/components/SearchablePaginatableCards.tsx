@@ -38,16 +38,18 @@ export default function SearchablePaginatableCards (props: SearchablePaginatable
         setFilterFunction(filter)
     }
 
-    return <div className='searchables'>
-        <div className='actions'>
-            <Form.Control type='search' placeholder='Search' aria-label='Search' onChange={newTextSearch}></Form.Control>
-        </div>
-        <PaginatableCards
-            fetch={ props.fetch }
-            paginationSize={ 10 }
-            createCard={ props.createCard }
-            filterFunction={ filterFunction }
-            comparator={ comparator }
-        />
-    </div>
+    return (
+        <>
+            <div className='actions'>
+                <Form.Control type='search' placeholder='Search' aria-label='Search' onChange={newTextSearch}></Form.Control>
+            </div>
+            <PaginatableCards
+                fetch={ props.fetch }
+                paginationSize={ 10 }
+                createCard={ props.createCard }
+                filterFunction={ filterFunction }
+                comparator={ comparator }
+            />
+        </>
+    )
 }
