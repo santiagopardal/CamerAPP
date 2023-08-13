@@ -1,0 +1,5 @@
+cd camerapp
+
+if [ ! -f ./.env ]; then
+    echo VITE_REACT_API_URL="http://camerapi:8080/api" >> ./.env
+fi
