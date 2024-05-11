@@ -38,8 +38,8 @@ export async function record(camera: Camera, startRecording: boolean): Promise<b
     return data.isRecording
 }
 
-export function getSnapshotUrl(camera: Camera) {
-    return `${API_URL}/cameras/snapshot/${camera.id}`
+export function getSnapshot(cameraId: number) {
+    return `${API_URL}/cameras/snapshot/${cameraId}`
 }
 
 export function save(camera: Camera) {
