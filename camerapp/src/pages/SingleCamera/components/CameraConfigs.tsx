@@ -37,8 +37,8 @@ function CameraConfigs({ camera }: { camera: Camera }) {
                 </div>
                 <span>
                     {'Running on '}
-                    <Link to={`/nodes/${camera.node}`}>
-                        Node {camera.node}
+                    <Link to={`/nodes/${camera.node.id}`}>
+                        Node {camera.node.id}
                     </Link>
                 </span>
                 <div className='recordingSwitch'>

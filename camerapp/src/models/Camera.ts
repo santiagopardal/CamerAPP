@@ -1,4 +1,5 @@
 import * as API from '../api/Cameras'
+import {Node} from '../api/Nodes'
 
 export interface CameraConfigurations {
     recording: boolean,
@@ -15,7 +16,7 @@ class Camera {
     width: number
     height: number
     framerate: number
-    node: number
+    node: Node
     private configurations: CameraConfigurations
 
     constructor(json: API.CameraJSON) {

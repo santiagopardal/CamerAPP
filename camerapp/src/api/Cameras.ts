@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Camera, {CameraConfigurations} from '../models/Camera'
+import {Node} from './Nodes'
 import API_URL from '../CamerAIConstants'
 
 export type CameraJSON = {
@@ -11,7 +12,7 @@ export type CameraJSON = {
     width: number,
     height: number,
     framerate: number,
-    node: number,
+    node: Node,
     configurations: CameraConfigurations
 }
 
