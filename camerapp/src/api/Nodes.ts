@@ -3,10 +3,17 @@ import API_URL from '../CamerAIConstants'
 import Camera from '../models/Camera'
 import { CameraJSON } from './Cameras'
 
+
+export enum NodeType {
+    OBSERVER = "OBSERVER",
+    PROCESSOR = "PROCESSOR"
+}
+
 export interface Node {
     id: number,
     ip: string,
-    port: number
+    port: number,
+    type: NodeType
 }
 
 export async function getNodes(): Promise<Node[]> {

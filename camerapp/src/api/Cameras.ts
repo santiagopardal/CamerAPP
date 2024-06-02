@@ -12,7 +12,7 @@ export type CameraJSON = {
     width: number,
     height: number,
     framerate: number,
-    node: Node,
+    nodes: Node[],
     recording: boolean,
     sensitivity: number
 }

@@ -11,11 +11,12 @@ class Camera {
     width: number
     height: number
     framerate: number
-    node: Node
+    nodes: Node[]
     recording: boolean
-    _sensitivity: number
+    sensitivity: number
 
     constructor(json: API.CameraJSON) {
+        console.log("JSON:", json)
         this.id = json.id
         this.name = json.name
         this.ip = json.ip
@@ -24,24 +25,13 @@ class Camera {
         this.width = json.width
         this.height = json.height
         this.framerate = json.framerate
-        this.node = json.node
+        this.nodes = json.nodes
         this.recording = json.recording
-        this._sensitivity = json.sensitivity
+        this.sensitivity = json.sensitivity
     }
 
     async record(record: boolean): Promise<boolean> {
         return await API.record(this, record)
-    }
-
-    get sensitivity(): number {
-        return this._sensitivity
-    }
-
-    set sensitivity(sensitivity: number) {
-        if (sensitivity > 1 || sensitivity < 0) {
-            throw new Error('Sensitivity must be a value between 0 and 1.')
-        }
-        this._sensitivity = sensitivity
     }
 
     get URL(): string {

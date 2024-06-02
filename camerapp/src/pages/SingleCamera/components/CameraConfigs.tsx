@@ -5,6 +5,7 @@ import useCameraConfigs from '../../../hooks/useCameraConfigs'
 import './CameraConfigs.css'
 import {Slider} from '@mui/material'
 import {Link} from 'react-router-dom'
+import {NodeType} from "../../../api/Nodes";
 
 
 function CameraConfigs({ camera }: { camera: Camera }) {
@@ -27,6 +28,8 @@ function CameraConfigs({ camera }: { camera: Camera }) {
         camera.save()
     }
 
+    const observerNode = camera.nodes.find(node => node.type === NodeType.OBSERVER)
+
     return (
         <div className='configs'>
             <h4 className='configsTitle'>Configurations</h4>
@@ -37,8 +40,8 @@ function CameraConfigs({ camera }: { camera: Camera }) {
                 </div>
                 <span>
                     {'Running on '}
-                    <Link to={`/nodes/${camera.node.id}`}>
-                        Node {camera.node.id}
+                    <Link to={`/nodes/${observerNode?.id}`}>
+                        Node {observerNode?.id}
                     </Link>
                 </span>
                 <div className='recordingSwitch'>
