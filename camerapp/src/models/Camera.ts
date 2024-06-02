@@ -16,7 +16,6 @@ class Camera {
     sensitivity: number
 
     constructor(json: API.CameraJSON) {
-        console.log("JSON:", json)
         this.id = json.id
         this.name = json.name
         this.ip = json.ip
