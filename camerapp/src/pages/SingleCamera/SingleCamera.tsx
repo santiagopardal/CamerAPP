@@ -26,22 +26,22 @@ function SingleCamera() {
     }, []);
 
     // FIXME: This is not right, what I really need is a websocket to transmit in real time.
-    useEffect(() => {
-        if (camera != null) {
-            setImageUrl(getSnapshot(camera.id) + "?timestamp=" + new Date().getTime())
-        }
-
-        const interval = setInterval(
-            async () => {
-                if (camera) {
-                    setImageUrl(getSnapshot(camera.id) + "?timestamp=" + new Date().getTime())
-                }
-            },
-            500
-        )
-
-        return () => clearInterval(interval)
-    }, [camera]);
+    // useEffect(() => {
+    //     if (camera != null) {
+    //         setImageUrl(getSnapshot(camera.id) + "?timestamp=" + new Date().getTime())
+    //     }
+    //
+    //     const interval = setInterval(
+    //         async () => {
+    //             if (camera) {
+    //                 setImageUrl(getSnapshot(camera.id) + "?timestamp=" + new Date().getTime())
+    //             }
+    //         },
+    //         500
+    //     )
+    //
+    //     return () => clearInterval(interval)
+    // }, [camera]);
 
 
     return camera && (
