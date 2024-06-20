@@ -5,7 +5,8 @@ import Camera from '../models/Camera'
 
 export type SearchablePaginatableCardsProps = {
     fetch: (howMany: number, startingIndex: number) => Promise<any[]>,
-    createCard: (searchable: any) => JSX.Element
+    createCard: (searchable: any) => JSX.Element,
+    comparator: (first: any, second: any) => number
 }
 
 type GetPropertyToCompare = {
@@ -48,7 +49,7 @@ export default function SearchablePaginatableCards (props: SearchablePaginatable
                 paginationSize={ 10 }
                 createCard={ props.createCard }
                 filterFunction={ filterFunction }
-                comparator={ comparator }
+                comparator={ props.comparator || comparator }
             />
         </>
     )

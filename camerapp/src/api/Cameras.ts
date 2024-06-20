@@ -1,5 +1,6 @@
 import axios from 'axios'
-import Camera, {CameraConfigurations} from '../models/Camera'
+import Camera from '../models/Camera'
+import {Node} from './Nodes'
 import API_URL from '../CamerAIConstants'
 
 export type CameraJSON = {
@@ -11,8 +12,9 @@ export type CameraJSON = {
     width: number,
     height: number,
     framerate: number,
-    node: number,
-    configurations: CameraConfigurations
+    nodes: Node[],
+    recording: boolean,
+    sensitivity: number
 }
 
 export async function getCameras(): Promise<Camera[]> {
@@ -37,8 +39,8 @@ export async function record(camera: Camera, startRecording: boolean): Promise<b
     return data.isRecording
 }
 
-export function getSnapshotUrl(camera: Camera) {
-    return `${API_URL}/cameras/snapshot/${camera.id}`
+export function getSnapshot(cameraId: number) {
+    return `${API_URL}/cameras/snapshot/${cameraId}`
 }
 
 export function save(camera: Camera) {

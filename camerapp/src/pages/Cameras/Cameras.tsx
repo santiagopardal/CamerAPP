@@ -11,6 +11,7 @@ function Cameras() {
         fetch={ (howMany: number, startingIndex: number) => getCameras() }
         getPropertyToCompare={ (camera: Camera) => camera.name }
         createCard={ (camera: Camera) => <CameraCard key={camera.id} camera={camera}/> }
+        comparator={ (first: Camera, second: Camera) => first.id >= second.id ? 1 : -1 }
     />
 }
 

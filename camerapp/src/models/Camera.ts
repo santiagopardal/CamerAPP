@@ -1,9 +1,5 @@
 import * as API from '../api/Cameras'
-
-export interface CameraConfigurations {
-    recording: boolean,
-    sensitivity: number
-}
+import {Node} from '../api/Nodes'
 
 class Camera {
 
@@ -15,8 +11,9 @@ class Camera {
     width: number
     height: number
     framerate: number
-    node: number
-    private configurations: CameraConfigurations
+    nodes: Node[]
+    recording: boolean
+    sensitivity: number
 
     constructor(json: API.CameraJSON) {
         this.id = json.id
@@ -27,31 +24,13 @@ class Camera {
         this.width = json.width
         this.height = json.height
         this.framerate = json.framerate
-        this.node = json.node
-        this.configurations = json.configurations
+        this.nodes = json.nodes
+        this.recording = json.recording
+        this.sensitivity = json.sensitivity
     }
 
     async record(record: boolean): Promise<boolean> {
         return await API.record(this, record)
-    }
-
-    get recording(): boolean {
-        return this.configurations.recording
-    }
-
-    set recording(recording: boolean) {
-        this.configurations.recording = recording
-    }
-
-    get sensitivity(): number {
-        return this.configurations.sensitivity
-    }
-
-    set sensitivity(sensitivity: number) {
-        if (sensitivity > 1 || sensitivity < 0) {
-            throw new Error('Sensitivity must be a value between 0 and 1.')
-        }
-        this.configurations.sensitivity = sensitivity
     }
 
     get URL(): string {

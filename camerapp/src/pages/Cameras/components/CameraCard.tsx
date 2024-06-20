@@ -4,7 +4,7 @@ import Camera from '../../../models/Camera'
 import Button from 'react-bootstrap/Button'
 import './CameraCard.css'
 import { useNavigate } from 'react-router-dom'
-import { getSnapshotUrl } from '../../../api/Cameras'
+import { getSnapshot } from '../../../api/Cameras'
 import useCameraConfigs from '../../../hooks/useCameraConfigs'
 import ListCard from '../../../components/ListCard'
 
@@ -22,7 +22,7 @@ function CameraCard(properties: {camera: Camera}) {
     return (
         <ListCard
             title={ camera.name }
-            imageSource={ isOnline ? getSnapshotUrl(camera) : undefined }
+            imageSource={ isOnline ? getSnapshot(camera.id) : undefined }
             onClick={ openCamera }
         >
             <div className='cardContent'>

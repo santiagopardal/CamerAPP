@@ -28,12 +28,14 @@ export default function SingleNode() {
         <>
         <div className='singleNode'>
             <h1>Node {node.id} running at {node.ip}:{node.port}</h1>
+            <h3>{node.type}</h3>
             <div className='camerasSection'>
                 <h2>Cameras being handled by the node</h2>
                 <SearchablePaginatableCards
                     fetch={(howMany: number, startingIndex: number) => getCameras(nodeId)}
                     getPropertyToCompare={(camera: Camera) => camera.name}
                     createCard={(camera: Camera) => <CameraCard key={camera.id} camera={camera}/>}
+                    comparator={ (first: Camera, second: Camera) => first.id >= second.id ? 1 : -1 }
                 />
             </div>
         </div>
